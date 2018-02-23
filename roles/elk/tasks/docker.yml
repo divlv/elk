@@ -2,3 +2,10 @@
   apt: name={{ item }} state=installed
   with_items:
     - docker.io
+
+- name: Adjusting Linux virtual memory setting for ELK
+  command: "sysctl -w vm.max_map_count=262144"
+    
+- lineinfile:
+    path: /etc/sysctl.conf
+    line: 'net.ipv6.conf.all.forwarding=1'
