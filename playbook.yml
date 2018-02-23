@@ -1,3 +1,6 @@
 - hosts: all
+  # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   roles:
   - elk
