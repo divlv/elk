@@ -1,4 +1,4 @@
 - name: Install DOCKER engine
   apt: name={{ item }} state=installed
   with_items:
-    - docker
+    - docker.io
