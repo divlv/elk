@@ -3,9 +3,16 @@
   with_items:
     - docker.io
 
-- name: Adjusting Linux virtual memory setting for ELK
-  command: "sysctl -w vm.max_map_count=262144"
-    
+- debug:
+    msg: "Adjusting Linux virtual memory setting for ELK:"
+
+- lineinfile:
+    dest: /etc/sysctl.conf
+    line: 'vm.max_map_count=262144'
+
+- debug:
+    msg: "Enable IPv4 port binding for Docker:"
+
 - lineinfile:
     dest: /etc/sysctl.conf
     line: 'net.ipv6.conf.all.forwarding=1'
