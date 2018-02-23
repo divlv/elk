@@ -1,4 +1,4 @@
 - name: Install DOCKER engine
-  apt: pkg={{ item }} state=installed
+  apt: name={{ item }} state=installed
   with_items:
-  - docker
+    - docker
