@@ -7,5 +7,5 @@
   command: "sysctl -w vm.max_map_count=262144"
     
 - lineinfile:
-    path: /etc/sysctl.conf
+    dest: /etc/sysctl.conf
     line: 'net.ipv6.conf.all.forwarding=1'
