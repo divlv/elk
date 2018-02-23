@@ -1,0 +1,13 @@
+---
+#
+- include: initial.yml
+#- include: firewall.yml
+#
+
+############# restore dump only (included in pgcip.yml)#
+#- include: pgcip_restore_dump.yml
+########################################################
+
+
+- debug:
+    msg: "Don't forget to REBOOT SERVER! Timezone changed. All services must reload new settings!"

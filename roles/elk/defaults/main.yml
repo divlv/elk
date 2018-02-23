@@ -1,0 +1,6 @@
+---
+#
+user: "lighttpd"
+lighttpd_server_port: "22280"
+pemfile: "/cert.pem"
+#
