@@ -8,11 +8,25 @@
 
 - lineinfile:
     dest: /etc/sysctl.conf
-    line: 'vm.max_map_count=262144'
+    line: 'vm.max_map_count = 262144'
 
 - debug:
-    msg: "Enable IPv4 port binding for Docker:"
+    msg: "Enable IPv4 port binding for Docker (step 1 of 3)"
 
 - lineinfile:
     dest: /etc/sysctl.conf
-    line: 'net.ipv6.conf.all.forwarding=1'
+    line: 'net.ipv6.conf.all.forwarding = 1'
+
+- debug:
+    msg: "Enable IPv4 port binding for Docker (step 2 of 3)"
+
+- lineinfile:
+    dest: /etc/sysctl.conf
+    line: 'net.ipv6.bindv6only = 0'
+
+- debug:
+    msg: "Enable IPv4 port binding for Docker (step 3 of 3)"
+
+- lineinfile:
+    dest: /etc/sysctl.conf
+    line: 'net.ipv4.ip_forward = 1'
