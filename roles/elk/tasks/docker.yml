@@ -1,6 +1,9 @@
 - name: Add DOCKER Repository
-  apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
+  command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
+- name: Update APT with DOCKER Repository
+  command: apt-get update  
+  
 - name: Install DOCKER engine
   apt: name={{ item }} state=installed
   with_items:
