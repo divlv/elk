@@ -1,7 +1,10 @@
+- name: Add DOCKER Repository
+  apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
+
 - name: Install DOCKER engine
   apt: name={{ item }} state=installed
   with_items:
-    - docker.io
+    - docker-ce
 
 - debug:
     msg: "Adjusting Linux virtual memory setting for ELK:"
