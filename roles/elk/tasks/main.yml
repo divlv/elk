@@ -9,3 +9,4 @@
     msg: "REBOOTING SERVER! Timezone changed. All services must reload new settings!"
 
 - shell: shutdown -r now
+  ignore_errors: true
