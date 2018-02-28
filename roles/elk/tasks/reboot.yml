@@ -13,7 +13,7 @@
 #- name: Call reboot script
 #  shell: /root/reboot.sh 1>/dev/null 2>/dev/null
 
-# !!!!!!!!!!!!!!!!!!!!!
+# This is working, but not needed
 #- name: Call reboot script
 #  shell: shutdown -r 10:26 1>/dev/null 2>/dev/null
 
@@ -22,23 +22,23 @@
 #- name: Schedule REBOOT in a minute...
 #  shell: date --date="now +1 minute" +"%H:%M" | shutdown -r
 
-- name: get current time
-  command: /bin/date +%s
-  register: before_reboot
+#- name: get current time
+#  command: /bin/date +%s
+#  register: before_reboot
 #  sudo: false
 
-- name: reboot system
+- name: REBOOT remote server
   shell: sleep 2 && shutdown -r now "Reboot triggered by Ansible"
   async: 1
   poll: 0
   ignore_errors: true
   
-- name: waiting for server to come back
-  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=10 timeout=220
+- name: Waiting for server to come back...
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=3 timeout=120
 # sudo: false
 
 - debug:
-    msg: "Looks like server rebooted."
+    msg: "Looks like server was rebooted successfully."
 
 
 #- name: verify a reboot was actually initiated
