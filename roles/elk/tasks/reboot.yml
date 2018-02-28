@@ -22,20 +22,22 @@
 #- name: Schedule REBOOT in a minute...
 #  shell: date --date="now +1 minute" +"%H:%M" | shutdown -r
 
-- name: restart server
-  shell: 'sleep 1 && shutdown -r now "Reboot triggered by Ansible" && sleep 1'
+- name: get current time
+  command: /bin/date +%s
+  register: before_reboot
+  sudo: false
+- name: reboot system
+  shell: sleep 2 && shutdown -r now "Ansible package updates triggered"
   async: 1
   poll: 0
-  become: true
-
-- name: Wait for server to restart
-  local_action:
-    module: wait_for
-      host={{ inventory_hostname }}
-      port=22
-      delay=10
-    become: false  
-
+  ignore_errors: true
+- name: waiting for server to come back
+  local_action: wait_for host={{ inventory_hostname }} state=started delay=30 timeout=220
+  sudo: false
+- name: verify a reboot was actually initiated
+  # machine should have started after it has been rebooted
+  shell: (( `date +%s` - `awk -F . '{print $1}' /proc/uptime` > {{ before_reboot.stdout }} ))
+  sudo: false
 #- name: waiting 70 secs for server to rebbot and come back
 #  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=70 timeout=120
 #  become: false
