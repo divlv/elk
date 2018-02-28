@@ -12,11 +12,11 @@
 - name: Copy Dockerfile
   copy: src=Dockerfile dest=/opt/elk/Dockerfile mode=0666
   
-- name: Copy build script
-  copy: src=dockerbuild.sh dest=/opt/elk/dockerbuild.sh mode=0777
+#- name: Copy build script
+#  copy: src=dockerbuild.sh dest=/opt/elk/dockerbuild.sh mode=0777
 
-- name: Building ELK/GELF Docker Image
-  command: /opt/elk/dockerbuild.sh
+#- name: Building ELK/GELF Docker Image
+#  command: /opt/elk/dockerbuild.sh
 
-- name: Starting ELK/GELF Docker image
-  command: docker run -d -p 80:5601 -p 9200:9200 -p 9300:9300  -p 12201:12201/udp dbc124d2d703
+#- name: Starting ELK/GELF Docker image
+#  command: docker run -d -p 80:5601 -p 9200:9200 -p 9300:9300  -p 12201:12201/udp dbc124d2d703
