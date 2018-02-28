@@ -2,7 +2,7 @@
 #
 # Scheduled reboot
 #
-sleep 4
+sleep 3
 reboot
 #echo "sleep 4 ; COMMAND" | at now
 #

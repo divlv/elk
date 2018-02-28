@@ -13,9 +13,12 @@
 #- name: Call reboot script
 #  shell: /root/reboot.sh 1>/dev/null 2>/dev/null
 
-- name: Call reboot script
-  shell: shutdown -r 10:26 1>/dev/null 2>/dev/null
+# !!!!!!!!!!!!!!!!!!!!!
+#- name: Call reboot script
+#  shell: shutdown -r 10:26 1>/dev/null 2>/dev/null
 
+- name: Call reboot script
+  shell: watch -p -n 5 -x "/root/reboot.sh" &>/dev/null &
 
 - name: waiting 60 secs for server to come back
   local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=60 timeout=120
