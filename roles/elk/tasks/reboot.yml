@@ -2,9 +2,7 @@
     msg: "REBOOTING SERVER! Timezone and other stuff changed. All services must reload new settings!"
 
 # Send the reboot command
-- shell: reboot
-  async: 0
-  poll: 0
+- shell: shutdown -r now "Ansible stuff upgraded. Need to reboot" && sleep 2
 
 # This pause is mandatory, otherwise the existing control connection gets reused!
 - pause: seconds=30
