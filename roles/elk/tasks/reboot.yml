@@ -17,16 +17,25 @@
 #- name: Call reboot script
 #  shell: shutdown -r 10:26 1>/dev/null 2>/dev/null
 
-- name: Schedule REBOOT in a minute...
-  shell: date --date="now +1 minute" +"%H:%M" | shutdown -r
+#!!!!!!!!!!!!!!!!!!!!
+#!!!!!!!!!!!!!!!!!!!!
+#- name: Schedule REBOOT in a minute...
+#  shell: date --date="now +1 minute" +"%H:%M" | shutdown -r
+
+- name: restart server
+  shell: 'sleep 1 && shutdown -r now "Reboot triggered by Ansible" && sleep 1'
+  async: 1
+  poll: 0
+  become: true
+
+- name: Wait for server to restart
+  local_action:
+    module: wait_for
+      host={{ inventory_hostname }}
+      port=22
+      delay=10
+    become: false  
 
 #- name: waiting 70 secs for server to rebbot and come back
 #  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=70 timeout=120
 #  become: false
-# Now we will run a local 'ansible -m ping' on this host until it returns.
-# This works with the existing ansible hosts inventory and so any custom ansible_ssh_hosts definitions are being used
-- local_action: shell ansible -u {{ ansible_user_id }} -m ping {{ inventory_hostname }}
-  register: result
-  until: result.rc == 0
-  retries: 30
-  delay: 10
