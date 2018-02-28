@@ -1,6 +1,11 @@
 - debug:
     msg: "Building ELK/GELF Docker image"
 
+- name: Create ELK directory
+  file: path=/opt/elk
+        state=directory
+        mode=0775
+
 - name: Copy GELF config file
   copy: src=03-gelf-input.conf dest=/opt/elk/03-gelf-input.conf mode=0666
   
