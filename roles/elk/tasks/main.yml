@@ -2,7 +2,7 @@
 #
 #- include: initial.yml
 #- include: docker.yml
-- include: reboot.yml
-#- include: elk.yml
+#- include: reboot.yml
+- include: elk.yml
 #- include: firewall.yml
 #
