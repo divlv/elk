@@ -5,7 +5,13 @@
 docker pull sebp/elk
 #
 # Start the ELK stack:
-docker run -p 80:5601 -p 9200:9200 -p 9300:9300  -p 9999:9999/udp 29fb3da4f590
+#docker run -p 80:5601 -p 9200:9200 -p 9300:9300  -p 9999:9999/udp 29fb3da4f590
+
+
+docker run -p 80:5601 -p 9200:9200 -p 9300:9300  -p 12201:12201/udp dbc124d2d703
+
+#docker run -p 80:5601 -p 9200:9200 -p 9300:9300  -p 9999:9999/udp -p 5044:5044/udp 29fb3da4f590
+
 #
 #
 # And don't forget the...

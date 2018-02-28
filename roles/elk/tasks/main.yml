@@ -2,11 +2,7 @@
 #
 - include: initial.yml
 - include: docker.yml
+- include: reboot.yml
+- include: elk.yml
 #- include: firewall.yml
 #
-
-- debug:
-    msg: "REBOOTING SERVER! Timezone changed. All services must reload new settings!"
-
-- shell: shutdown -r now
-  ignore_errors: true
