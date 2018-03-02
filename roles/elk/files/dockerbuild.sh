@@ -4,5 +4,5 @@
 #
 cd /opt/elk
 #
-docker build .
+docker build -t wfelk . 
 #
