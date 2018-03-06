@@ -12,8 +12,8 @@
 - name: Copy Dockerfile
   copy: src=Dockerfile dest=/opt/elk/Dockerfile mode=0666
   
-#- name: Copy build script
-#  copy: src=dockerbuild.sh dest=/opt/elk/dockerbuild.sh mode=0777
+- name: Copy build script
+  copy: src=dockerbuild.sh dest=/opt/elk/dockerbuild.sh mode=0777
 
 #- name: Building ELK/GELF Docker Image
 #  command: /opt/elk/dockerbuild.sh
