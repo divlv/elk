@@ -4,14 +4,15 @@
 # 
 # For this special task, we must use "remote_user = {raw_linux_user}" to force login as "{raw_linux_user}" this time
 #
-- name: Include Global vars
-  include_vars:
-    file: vars.yml
+#- name: Include Global vars
+#  include_vars:
+#    file: vars.yml
 
-- remote_user: {raw_linux_user}
-  hosts: all
+#- remote_user: {raw_linux_user}
+- hosts: all
   # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
   vars:
+    remote_user: rixuser
     ansible_python_interpreter: /usr/bin/python3
   roles:
   - allow_root_login
