@@ -4,7 +4,7 @@
 # 
 # For this special task, we must use "remote_user = ubuntu" to force login as "ubuntu" this time
 #
-- remote_user: ubuntu
+- remote_user: rixuser
   hosts: all
   # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
   vars:
