@@ -5,6 +5,6 @@
 # For this special task, we must use "remote_user = {raw_linux_user}" to force login as "{raw_linux_user}" this time
 
 - name: Allow ROOT login
-  command: cp /home/{raw_linux_user}/.ssh/authorized_keys /root/.ssh/authorized_keys
+  command: cp /home/rixuser/.ssh/authorized_keys /root/.ssh/authorized_keys
   become: true
   become_user: root

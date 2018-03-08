@@ -12,7 +12,6 @@
   hosts: all
   # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
   vars:
-    raw_linux_user: rixuser
     ansible_python_interpreter: /usr/bin/python3
   roles:
   - allow_root_login
