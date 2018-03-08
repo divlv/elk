@@ -4,8 +4,9 @@
 # 
 # For this special task, we must use "remote_user = {raw_linux_user}" to force login as "{raw_linux_user}" this time
 #
-vars_files:
-  - ./vars.yml
+- name: Include Global vars
+  include_vars:
+    file: vars.yml
 
 - remote_user: {raw_linux_user}
   hosts: all
