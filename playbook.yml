@@ -1,16 +1,19 @@
-# Workaround for AWS:
-# 1-st time it allows to login only as "ubuntu" user.
+# Workaround for AWS and others who don't allow ROOT at once:
+# 1-st time it allows to login only as "ubuntu" (or other not root) user.
 # It needs just overwrite "authorized_keys" file for root user - to allow remote root login.
 # 
-# For this special task, we must use "remote_user = ubuntu" to force login as "ubuntu" this time
+# For this special task, we must use "remote_user = {raw_linux_user}" to force login as "{raw_linux_user}" this time
 #
-- remote_user: rixuser
+vars_files:
+  - ./vars.yml
+
+- remote_user: {raw_linux_user}
   hosts: all
   # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
   vars:
     ansible_python_interpreter: /usr/bin/python3
   roles:
-  - aws_allow_root_login
+  - allow_root_login
 #
 # Now we can proceed as always. Remote ROOT login should be already enabled.
 #

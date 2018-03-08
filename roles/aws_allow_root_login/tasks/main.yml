@@ -1,7 +1,0 @@
-# Workaround for AWS:
-# 1-st time it allows to login only as "ubuntu" user.
-# It needs just overwrite "authorized_keys" file for root user - to allow remote root login.
-- name: AWS -=- Allow ROOT login
-  command: cp /home/ubuntu/.ssh/authorized_keys /root/.ssh/authorized_keys
-  become: true
-  become_user: root
