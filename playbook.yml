@@ -8,7 +8,7 @@
 #- include_vars: vars.yml
 #    file: vars.yml
 
-- remote_user: rixuser
+- remote_user: ubuntu
   hosts: all
   # Adjusted for Hetzner: Ubuntu 16.04 has only python3 here:
   vars:

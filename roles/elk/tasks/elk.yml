@@ -19,4 +19,4 @@
 #  command: /opt/elk/dockerbuild.sh
 
 #- name: Starting ELK/GELF Docker image
-#  command: docker run -d -p 80:5601 -p 9200:9200 -p 9300:9300  -p 12201:12201/udp dbc124d2d703
+#  command: docker run -p 80:5601 -p 9200:9200 -p 9300:9300 -p 12201:12201/udp --name elk1 wfelk
