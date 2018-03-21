@@ -11,3 +11,7 @@ echo "alias ffind='find / -name '" >> ~/.bash_aliases && source ~/.bash_aliases
 
 #Adding open ports display command alias
 echo "alias ports='netstat -an | grep LISTEN'" >> ~/.bash_aliases && source ~/.bash_aliases
+
+#Docker related aliases: Stop all containers
+echo "alias dstop='docker stop $(docker ps -aq)'" >> ~/.bash_aliases && source ~/.bash_aliases
+
