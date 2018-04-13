@@ -1,5 +1,5 @@
 - debug:
-    msg: "Building ELK/GELF Docker image"
+    msg: "Preparing infrastructure for ELK/GELF Docker image"
 
 - name: Create ELK directory
   file: path=/opt/elk
@@ -14,6 +14,15 @@
   
 - name: Copy build script
   copy: src=dockerbuild.sh dest=/opt/elk/dockerbuild.sh mode=0777
+
+- name: Create ELK Cutom variables directory
+  file: path=/opt/elk/patterns
+        state=directory
+        mode=0775
+
+- name: Copy file with custom patterns/variables
+  copy: src=mycustomvars dest=/opt/elk/patterns/mycustomvars mode=0666
+
 
 #- name: Building ELK/GELF Docker Image
 #  command: /opt/elk/dockerbuild.sh

@@ -1,0 +1,2 @@
+USERIDINRAW ((?<=\(default task\-\w\)) ([a-z]+))|(?<=\(default task\-\w\w\)) ([a-z]+)|(?<=\(default task\-\w\w\w\)) ([a-z]+)
+USERID_IN_MESSAGE (\w+)(?= is using PRODUCTION Persistence Unit)

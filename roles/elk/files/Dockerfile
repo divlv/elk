@@ -1,6 +1,7 @@
 FROM sebp/elk
 
 ADD ./03-gelf-input.conf /etc/logstash/conf.d/03-gelf-input.conf
+ADD ./patterns/mycustomvars /etc/logstash/conf.d/patterns/mycustomvars
 # TODO: add ADD directive to overwrite 30-output.conf as needed
 
 # expose GELF's default UDP port (12201)
