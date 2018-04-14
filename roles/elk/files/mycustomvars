@@ -1,2 +1,4 @@
 USERIDINRAW ((?<=\(default task\-\w\)) ([a-z]+))|(?<=\(default task\-\w\w\)) ([a-z]+)|(?<=\(default task\-\w\w\w\)) ([a-z]+)
 USERID_IN_MESSAGE (\w+)(?= is using PRODUCTION Persistence Unit)
+CIPMAIN_PAGE (?<=cipmain_page\=)(.+)
+CLIENT_IP (?<=cipmain_client_ip\=)([0-9\.]+)
