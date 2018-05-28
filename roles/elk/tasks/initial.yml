@@ -22,6 +22,14 @@
 - name: Apply Aliases
   command: /root/aliases.sh
 
+- name: Install packages to allow APT to use repositories over HTTPS
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
+
 - name: Misc apps
   apt: pkg={{ item }} state=installed
   with_items:
